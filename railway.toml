@@ -1,6 +1,6 @@
 [build]
 builder = "nixpacks"
-buildCommand = "go build cmd/wechat-server/main.go -o wechat-server"
+buildCommand = "go build -o wechat-server cmd/wechat-server/main.go "
 
 [deploy]
 startCommand = "./wechat-server"
