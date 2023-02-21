@@ -4,10 +4,12 @@ import (
 	"fmt"
 	"github.com/francisar/chatgpt/ginserve"
 	"github.com/gin-gonic/gin"
+	"github.com/spf13/viper"
 	"os"
 )
 
 func main()  {
+	viper.SetConfigType("env")
 	r := gin.Default()
 	// 传入request和responseWriter
 	r.Any("/api/v1/serve", ginserve.OffServe)

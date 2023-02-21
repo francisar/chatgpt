@@ -3,11 +3,13 @@ package modeler
 import (
 	"context"
 	"github.com/sashabaranov/go-gpt3"
+	"github.com/spf13/viper"
 	"strings"
 )
 
 func Textcompletion(promt string) (string, error) {
-	c := gogpt.NewClient("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")
+	token := viper.GetString("GPT_TOKEN")
+	c := gogpt.NewClient(token)
 	ctx := context.Background()
 	req := gogpt.CompletionRequest{
 		Model:     gogpt.GPT3TextDavinci003,
