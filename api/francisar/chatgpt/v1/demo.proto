@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+// 根据具体的微服务名称做更改
+package francisar.chatgpt.v1;
+
+// 引入google公共类型
+import "google/protobuf/empty.proto";
+
+// 引入第三方依赖的proto文件
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger/options/annotations.proto";
+
+// 引入项目通用的proto文件
+import "github.com/grpc-kit/api/proto/v1/example.proto";
+
+// 结合本项目，推荐做以下设置
+option (gogoproto.marshaler_all) = true;
+option (gogoproto.sizer_all) = true;
+option (gogoproto.unmarshaler_all) = true;
+option (gogoproto.goproto_registration) = true;
+option (gogoproto.goproto_getters_all) = true;
+option (gogoproto.goproto_unrecognized_all) = false;
+option (gogoproto.goproto_unkeyed_all) = false;
+option (gogoproto.goproto_sizecache_all) = false;
+option (gogoproto.equal_all) = true;
+option (gogoproto.compare_all) = true;
+option (gogoproto.messagename_all) = false;
+
+message DemoRequest {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            description: "Demo方法请求可使用的接口参数",
+        },
+        example: { value: '{ "ping": { "name": "grpc-kit" } }' }
+    };
+
+    // UUID 资源编号
+    string uuid = 1;
+
+    // Ping 资源内容
+    grpc.kit.api.proto.v1.ExampleRequest ping = 2;
+}
+
+message DemoResponse {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            description: "Demo方法响应的具体内容",
+        },
+        example: { value: '{"uuid":"99feafb5-bed6-4daf-927a-69a2ab80c485", "pong": { "name": "grpc-kit" } }' }
+    };
+
+    message Pong {
+        // UUID 资源编号
+        string uuid = 1;
+
+        // Pong 单个资源响应内容
+        grpc.kit.api.proto.v1.ExampleResponse pong = 2;
+    }
+
+    // Pong 返回创建的资源
+    Pong pong = 1;
+
+    // Content 多个资源响应内容（无分页属性）
+    repeated grpc.kit.api.proto.v1.ExampleResponse content = 2;
+
+    // Ping 返回更新的资源
+    grpc.kit.api.proto.v1.ExampleResponse ping = 3;
+
+    // Empty 返回空的内容
+    google.protobuf.Empty empty = 4;
+}

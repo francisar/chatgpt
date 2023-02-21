@@ -1,0 +1,20 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  #annotations:
+  #  nginx.ingress.kubernetes.io/proxy-body-size: 10m
+  name: francisar-chatgpt-v1
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: francisar-chatgpt-v1.biz-DEPLOY_ENV-NAMESPACE.api.grpc-kit.com
+    http:
+      paths:
+      - path: /
+        backend:
+          service:
+            name: francisar-chatgpt-v1
+            port:
+              number: 10080
+        pathType: Prefix

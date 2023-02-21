@@ -1,0 +1,31 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: biz-DEPLOY_ENV-NAMESPACE
+
+commonLabels:
+  api.grpc-kit.com/appname: francisar-chatgpt-v1
+  api.grpc-kit.com/pm2-uuid: 3264e3fe-2bce-4835-8588-99651a8ddd3b
+
+commonAnnotations:
+  api.grpc-kit.com/pm2-uuid: 3264e3fe-2bce-4835-8588-99651a8ddd3b
+
+configMapGenerator:
+- name: francisar-chatgpt-v1
+  files:
+  - app.yaml=config/configmap/app.yaml
+  options:
+    disableNameSuffixHash: true
+
+replicas:
+- name: francisar-chatgpt-v1
+  count: 1
+
+resources:
+- service/ingresses.yaml
+- service/services.yaml
+- workloads/deployment.yaml
+
+images:
+- name: IMAGE_NAME
+  newTag: IMAGE_VERSION

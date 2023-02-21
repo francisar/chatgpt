@@ -1,0 +1,9 @@
+[build]
+builder = "nixpacks"
+buildCommand = "go build cmd/wechat-server/main.go -o wechat-server"
+
+[deploy]
+startCommand = "./wechat-server"
+healthcheckPath = "/"
+healthcheckTimeout = 100
+restartPolicyType = "never"

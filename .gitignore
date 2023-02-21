@@ -5,11 +5,27 @@
 *.so
 *.dylib
 
-# Test binary, built with `go test -c`
+# Test binary
 *.test
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
-# Dependency directories (remove the comment below to include it)
-# vendor/
+# Dependency directories
+vendor/
+
+# Config file and certificate
+config/*.pem
+config/*.crt
+config/*.key
+config/app-dev-*
+config/app-test-*
+config/app-prod-*
+
+# Others
+.swp
+.bak
+.idea/
+build/
+backup/
+public/doc/openapi-spec/api/*

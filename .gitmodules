@@ -1,0 +1,9 @@
+[submodule "proto/github.com/grpc/grpc-proto"]
+	path = proto/github.com/grpc/grpc-proto
+	url = https://github.com/grpc/grpc-proto.git
+[submodule "proto/github.com/googleapis/googleapis"]
+	path = proto/github.com/googleapis/googleapis
+	url = https://github.com/googleapis/googleapis.git
+[submodule "proto/github.com/grpc-kit/api"]
+	path = proto/github.com/grpc-kit/api
+	url = https://github.com/grpc-kit/api.git
