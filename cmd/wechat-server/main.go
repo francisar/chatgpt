@@ -13,6 +13,7 @@ func main()  {
 	r := gin.Default()
 	// 传入request和responseWriter
 	r.Any("/api/v1/serve", ginserve.OffServe)
+	r.Any("/health", ginserve.HealthServe)
 	port := os.Getenv("PORT")
 	addr := fmt.Sprintf("0.0.0.0:%s", port)
 	err := r.Run(addr)
