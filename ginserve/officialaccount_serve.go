@@ -17,11 +17,13 @@ func OffServe(c *gin.Context)  {
 	appId := viper.GetString("WECHAT_APPID")
 	appSecret := viper.GetString("WECHAT_APPSECRET")
 	token := viper.GetString("WECHAT_TOKEN")
+	encodingAESKey := viper.GetString("WECHAT_ENCODINGAESKEY")
+	fmt.Println(appId)
 	cfg := &offConfig.Config{
 		AppID:     appId,
 		AppSecret: appSecret,
 		Token:     token,
-		// EncodingAESKey: "xxxx",
+		EncodingAESKey: encodingAESKey,
 		Cache: memory,
 	}
 	officialAccount := wc.GetOfficialAccount(cfg)
