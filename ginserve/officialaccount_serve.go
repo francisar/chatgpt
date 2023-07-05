@@ -2,6 +2,7 @@ package ginserve
 
 import (
 	"fmt"
+	"log"
 	"github.com/francisar/chatgpt/handler"
 	"github.com/gin-gonic/gin"
 	"github.com/silenceper/wechat/v2"
@@ -18,7 +19,7 @@ func OffServe(c *gin.Context)  {
 	appSecret := viper.GetString("WECHAT_APPSECRET")
 	token := viper.GetString("WECHAT_TOKEN")
 	encodingAESKey := viper.GetString("WECHAT_ENCODINGAESKEY")
-	c.Debug(appId)
+	log.Debug(appId)
 	cfg := &offConfig.Config{
 		AppID:     appId,
 		AppSecret: appSecret,
