@@ -9,8 +9,8 @@ import (
 	"github.com/silenceper/wechat/v2/officialaccount"
 	offConfig "github.com/silenceper/wechat/v2/officialaccount/config"
 	log "github.com/sirupsen/logrus"
-	"github.com/spf13/viper"
 	"net/http"
+	"os"
 )
 
 var wc * wechat.Wechat
@@ -19,10 +19,10 @@ var officialAccount * officialaccount.OfficialAccount
 func init()  {
 	wc = wechat.NewWechat()
 	memory := cache.NewMemory()
-	appId := viper.GetString("WECHAT_APPID")
-	appSecret := viper.GetString("WECHAT_APPSECRET")
-	token := viper.GetString("WECHAT_TOKEN")
-	encodingAESKey := viper.GetString("WECHAT_ENCODINGAESKEY")
+	appId := os.Getenv("WECHAT_APPID")
+	appSecret :=  os.Getenv("WECHAT_APPSECRET")
+	token :=  os.Getenv("WECHAT_TOKEN")
+	encodingAESKey :=  os.Getenv("WECHAT_ENCODINGAESKEY")
 	cfg := &offConfig.Config{
 		AppID:     appId,
 		AppSecret: appSecret,
