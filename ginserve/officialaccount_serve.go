@@ -38,7 +38,7 @@ func OffServe(c *gin.Context)  {
 	server := officialAccount.GetServer(c.Request, c.Writer)
 	// 设置接收消息的处理方法
 	server.SetMessageHandler(handler.OffAccMessageHandler)
-	log.Debugf("url:%s", c.Request.URL)
+	log.Debugf("url:%s, remote addr:%s request:%v", c.Request.URL, c.Request.RemoteAddr,c.Request)
 	// 处理消息接收以及回复
 	err := server.Serve()
 	if err != nil {
