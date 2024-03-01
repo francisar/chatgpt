@@ -4,12 +4,12 @@ import (
 	"context"
 	"fmt"
 	"github.com/sashabaranov/go-gpt3"
-	"github.com/spf13/viper"
+	"os"
 	"strings"
 )
 
 func Textcompletion(promt string) (string, error) {
-	token := viper.GetString("GPT_TOKEN")
+	token := os.Getenv("GPT_TOKEN")
 	fmt.Println(token)
 	c := gogpt.NewClient(token)
 	ctx := context.Background()
