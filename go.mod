@@ -3,6 +3,7 @@ module github.com/francisar/chatgpt
 go 1.16
 
 require (
+	github.com/anhao/go-ernie v1.0.9 // indirect
 	github.com/francisar/base-util v0.0.8 // indirect
 	github.com/francisar/component v0.0.0-20230216081257-fe626fdc39fe // indirect
 	github.com/gin-gonic/gin v1.8.2
