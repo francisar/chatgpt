@@ -13,19 +13,24 @@ func Textcompletion(promt string) (string, error) {
 	fmt.Println(token)
 	c := openai.NewClient(token)
 	ctx := context.Background()
-	req := openai.CompletionRequest{
+	req := openai.ChatCompletionRequest{
 		Model:     openai.GPT3Dot5Turbo0125,
-		MaxTokens: 2048,
-		Prompt:    promt,
+		MaxTokens: 16385,
+		Messages:    []openai.ChatCompletionMessage{
+			{
+				Role:    openai.ChatMessageRoleSystem,
+				Content: promt,
+			},
+		},
 	}
-	resp, err := c.CreateCompletion(ctx, req)
+	resp, err := c.CreateChatCompletion(ctx, req)
 	if err != nil {
 		return "", err
 	}
 	var builder strings.Builder
-	builder.Grow(2048 )
+	builder.Grow(16385 )
 	for _,choices := range resp.Choices {
-		builder.WriteString(choices.Text)
+		builder.WriteString(choices.Message.Content)
 	}
 	return builder.String(), nil
 }
