@@ -2,6 +2,7 @@ package modeler
 
 import (
 	"context"
+	"fmt"
 	"github.com/sashabaranov/go-gpt3"
 	"github.com/spf13/viper"
 	"strings"
@@ -9,6 +10,7 @@ import (
 
 func Textcompletion(promt string) (string, error) {
 	token := viper.GetString("GPT_TOKEN")
+	fmt.Println(token)
 	c := gogpt.NewClient(token)
 	ctx := context.Background()
 	req := gogpt.CompletionRequest{
