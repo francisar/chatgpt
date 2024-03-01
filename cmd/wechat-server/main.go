@@ -15,7 +15,8 @@ func main()  {
 	r.Any("/", ginserve.OffServe)
 	r.Any("/health", ginserve.HealthServe)
 	port := os.Getenv("PORT")
-	addr := fmt.Sprintf("0.0.0.0:%s", port)
+	ip := os.Getenv("IP_ADDR")
+	addr := fmt.Sprintf("%s:%s", ip, port)
 	err := r.Run(addr)
 	panic(err)
 }

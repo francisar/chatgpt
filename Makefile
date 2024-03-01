@@ -79,6 +79,7 @@ build: clean generate ## Build application binary.
 	@mkdir build
 	@mkdir build/deploy
 	@GOOS=${BUILD_GOOS} ${GOBUILD} -ldflags ${BUILD_LD_FLAGS} -o build/service cmd/server/main.go
+	@GOOS=${BUILD_GOOS} ${GOBUILD} -ldflags ${BUILD_LD_FLAGS} -o build/wechat cmd/wechat-server/main.go
 
 .PHONY: run
 run: generate ## Run a application from your host.
