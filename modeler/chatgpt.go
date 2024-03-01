@@ -3,7 +3,7 @@ package modeler
 import (
 	"context"
 	"fmt"
-	"github.com/sashabaranov/go-gpt3"
+	"github.com/sashabaranov/go-openai"
 	"os"
 	"strings"
 )
@@ -11,10 +11,10 @@ import (
 func Textcompletion(promt string) (string, error) {
 	token := os.Getenv("GPT_TOKEN")
 	fmt.Println(token)
-	c := gogpt.NewClient(token)
+	c := openai.NewClient(token)
 	ctx := context.Background()
-	req := gogpt.CompletionRequest{
-		Model:     gogpt.GPT3TextDavinci003,
+	req := openai.CompletionRequest{
+		Model:     openai.GPT3Dot5Turbo0125,
 		MaxTokens: 2048,
 		Prompt:    promt,
 	}
