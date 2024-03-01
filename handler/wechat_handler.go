@@ -9,15 +9,16 @@ import (
 func OffAccMessageHandler(msg *message.MixMessage) *message.Reply {
 
 	// 回复消息：演示回复用户发送的消息
-	text := message.NewText(msg.Content)
-	replyText, err := modeler.Textcompletion(string(text.Content))
+
+	replyText, err := modeler.Textcompletion(msg.Content)
+	text := message.NewText(replyText)
 	replyMsg :=  message.Reply{
 		MsgType: message.MsgTypeText,
-		MsgData: "我需要休息一下，等等再聊",
+		MsgData: text,
 	}
 	if err != nil {
 		fmt.Println(err)
 	}
-	replyMsg.MsgData = replyText
+	replyMsg.MsgData = &replyText
 	return &replyMsg
 }

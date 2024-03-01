@@ -11,7 +11,6 @@ require (
 	github.com/golang/protobuf v1.5.2
 	github.com/grpc-ecosystem/grpc-gateway v1.16.0
 	github.com/grpc-kit/pkg v0.2.3
-	github.com/sashabaranov/go-gpt3 v1.1.0
 	github.com/sashabaranov/go-openai v1.20.2 // indirect
 	github.com/silenceper/wechat/v2 v2.1.4
 	github.com/sirupsen/logrus v1.9.0
